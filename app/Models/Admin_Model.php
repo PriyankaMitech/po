@@ -17,6 +17,16 @@ class Admin_Model extends Model
         }
     }
 
+    public function getUserByEmail($email)
+    {
+        return $this->db->table('tbl_register')
+            ->where('email', $email)
+            ->where('type', 'Admin')
+            ->get()
+            ->getRow();
+    }
+
+
     public function getalldata($table, $wherecond)
     {
         $result = $this->db->table($table)->where($wherecond)->get()->getResult();
@@ -27,5 +37,6 @@ class Admin_Model extends Model
             return false;
         }
     }
+
 
 }
