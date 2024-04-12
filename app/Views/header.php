@@ -210,6 +210,7 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="<?=base_url(); ?>tax">Add Tax</a></li>
                 <li><a class="nav-link" href="<?=base_url(); ?>vendor_type">Add Vendor Type</a></li>
+                <li><a class="nav-link" href="<?=base_url(); ?>add_menu">Add menu</a></li>
               </ul>
             </li>
             <li class="dropdown">

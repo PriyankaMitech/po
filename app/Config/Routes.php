@@ -30,8 +30,10 @@ $routes->post('edit_vendor_type/(:any)','Home::vendor_type/$1');
 
 $routes->get('delete/(:any)/(:any)','Home::delete/$1');
 // $routes->post('delete','Home::delete');
-
-
+$routes->get('add_menu','Home::add_menu');
+$routes->post('add_menu','Home::add_menu');
+$routes->get('add_menu/(:any)','Home::add_menu/$1');
+$routes->post('add_menu/(:any)','Home::add_menu/$1');
 
 
 

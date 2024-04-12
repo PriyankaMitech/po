@@ -305,6 +305,62 @@ class Home extends BaseController
         $update_data->update($data);
         return redirect()->back();
     }
-   
+//    public function add_menu()
+//    {
+//     $model = new Admin_Model();
+//     $wherecond = array('is_deleted ' => '0');
+//     $data['menu_name'] =  $model->getalldata('tbl_menu', $wherecond);
+//     // echo '<pre>';print_r($data['vendor_type']);die;
+    
+//     echo view('add_menu',$data);
+//    }
+
+public function add_menu()
+{
+    $model = new Admin_Model();
+    $uri = service('uri');
+
+    // Get the second segment of the URI
+    $segment = $uri->getSegment(2);
+
+    // echo $segment;exit();
+
+    if (session()->has('user_id')) { 
+
+        $wherecond = array('is_deleted ' => '0');
+        $data['menu_name'] =  $model->getalldata('tbl_menu', $wherecond);
+
+        if($segment != ''){
+
+        $wherecond = array('id ' => $segment);
+        $data['single'] =  $model->getsinglerow('tbl_menu', $wherecond);
+        }
+
+
+        if($this->request->getVar('submit') == 'submit'){
+
+            $data = [
+                'menu_name' => $this->request->getVar('menu_name'), 
+            ];
+            $db = \Config\Database::Connect();
+    
+            if ($this->request->getVar('id') == "") {
+                $add_data = $db->table('tbl_menu');
+                $add_data->insert($data);
+                session()->setFlashdata('success', 'Data added successfully.');
+            } else {
+                $update_data = $db->table('tbl_menu')->where('id', $this->request->getVar('id'));
+                $update_data->update($data);
+                
+                session()->setFlashdata('success', 'Data updated successfully.');
+            }
+            return redirect()->to('add_menu');
+        }
+    
+        return view('add_menu',$data);
+    } else {
+        return redirect()->to(base_url());
+    }
+}
 
 }
