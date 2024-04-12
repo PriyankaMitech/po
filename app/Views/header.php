@@ -202,7 +202,7 @@
           <ul class="sidebar-menu">
             <li class="menu-header">Main</li>
             <li class="dropdown active">
-              <a href="<?=base_url(); ?>index.html" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
+              <a href="<?=base_url(); ?>admin_dashboard" class="nav-link"><i data-feather="monitor"></i><span>Dashboard</span></a>
             </li>
             <li class="dropdown">
               <a href="<?=base_url(); ?>#" class="menu-toggle nav-link has-dropdown"><i
