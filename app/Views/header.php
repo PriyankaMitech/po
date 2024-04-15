@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Otika - Admin Dashboard Template</title>
+  <title>Po</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?=base_url(); ?>assets/css/app.min.css">
   
@@ -210,16 +210,25 @@
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="<?=base_url(); ?>tax">Add Tax</a></li>
                 <li><a class="nav-link" href="<?=base_url(); ?>vendor_type">Add Vendor Type</a></li>
-                <li><a class="nav-link" href="<?=base_url(); ?>add_menu">Add menu</a></li>
+                <li><a class="nav-link" href="<?=base_url(); ?>menu">Add menu</a></li>
+
+                
+
+
               </ul>
             </li>
             <li class="dropdown">
-              <a href="<?=base_url(); ?>#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Apps</span></a>
+              <a href="<?=base_url(); ?>#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>User</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="<?=base_url(); ?>chat.html">Chat</a></li>
-                <li><a class="nav-link" href="<?=base_url(); ?>portfolio.html">Portfolio</a></li>
-                <li><a class="nav-link" href="<?=base_url(); ?>blog.html">Blog</a></li>
-                <li><a class="nav-link" href="<?=base_url(); ?>calendar.html">Calendar</a></li>
+                <li><a class="nav-link" href="<?=base_url(); ?>user">Add User</a></li>
+                <li><a class="nav-link" href="<?=base_url(); ?>user-list">User List</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="<?=base_url(); ?>#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Vendor</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="<?=base_url(); ?>add-vendor">Add Vendor</a></li>
+                <li><a class="nav-link" href="<?=base_url(); ?>vendor-list">Vendor List</a></li>
               </ul>
             </li>
             <li class="dropdown">

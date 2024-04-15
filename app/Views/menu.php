@@ -5,30 +5,36 @@
         <section class="section">
           <div class="section-body">
             <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
+              <div class="col-12 col-md-12 col-lg-12">
           
                 <div class="card">
                   <form id="menu_form" method="post" >
                     <div class="card-header">
                       <h4>Add Menu</h4>
                     </div>
-                    <div class="card-body">
-                      <div class="form-group">
+                    <div class="row card-body">
+                      <div class="form-group col-6">
                         <label>Menu Name</label>                        
                         <input type="hidden" class="form-control" name="id" value="<?php if(!empty($single)){ echo $single->id;} ?>">
                         <input type="text" class="form-control" name="menu_name" value="<?php if(!empty($single)){ echo $single->menu_name;} ?>">
+                       
+                      </div>
+
+                      <div class="form-group col-6">
+                        <label>URL</label>                        
+                        <input type="text" class="form-control" name="url" value="<?php if(!empty($single)){ echo $single->url;} ?>">
                        
                       </div>
                     
                     </div>
                     <div class="card-footer text-right">
                       <!-- <button class="btn btn-primary" type="submit" >Submit</button> -->
-                      <button class="btn btn-primary" type="submit" name="submit" value="submit">Submit</button>
+                      <button class="btn btn-primary" type="submit" name="submit" value="submit">Save</button>
                     </div>
                   </form>
                 </div>
               </div>
-              <div class="col-12 col-md-6 col-lg-6">
+              <div class="col-12 col-md-12 col-lg-12">
        
               <div class="card">
                   <div class="card-header">
@@ -42,7 +48,9 @@
                             <th >
                               Sr.No
                             </th>
-                            <th>menu name </th>
+                            <th>Menu Name </th>
+                            <th>URL </th>
+
                             <th>Action</th>
                            
                           </tr>
@@ -55,8 +63,10 @@
                                  <?=$i; ?>
                                 </td>
                                 <td><?=$data->menu_name;?></td>
+                                <td><?=$data->url;?></td>
+
                                 <td class="align-middle">
-                                  <a href="<?=base_url();?>add_menu/<?=$data->id;?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                  <a href="<?=base_url();?>edit-menu/<?=$data->id;?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                   <a href="<?=base_url();?>delete/<?=$data->id;?>/tbl_menu" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></a>
                                 </td>
                     
