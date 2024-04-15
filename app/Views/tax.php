@@ -23,7 +23,7 @@
                     
                     </div>
                     <div class="card-footer text-right">
-                      <button class="btn btn-primary" type="submit" name="submit" value="submit">Submit</button>
+                      <button class="btn btn-primary" type="submit" name="submit" value="submit">Save</button>
                     </div>
                   </form>
                 </div>
@@ -56,7 +56,7 @@
                                 </td>
                                 <td><?=$data->tax_name;?></td>
                                 <td class="align-middle">
-                                  <a href="<?=base_url();?>edit_tax/<?=$data->id;?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
+                                  <a href="<?=base_url();?>edit-tax/<?=$data->id;?>" class="btn btn-icon btn-primary"><i class="far fa-edit"></i></a>
                                   <a href="<?=base_url();?>delete/<?=$data->id;?>/tbl_tax" class="btn btn-icon btn-danger"><i class="fas fa-trash"></i></a>
                                 </td>
                     
