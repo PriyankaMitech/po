@@ -472,13 +472,14 @@ public function menu()
             $data['country'] = $model->get_country_name();
             $data['states'] = $model->get_states_name();
             $data['citys'] = $model->get_citys_name();
+            $wherecond = array('is_deleted ' => '0');
+            $data['vendor_type'] =  $model->getalldata('tbl_vendor_type', $wherecond);
 
 
             if($segment != ''){
 
 
-   
-
+               
             $wherecond = array('id ' => $segment);
             $data['single'] =  $model->getsinglerow('tbl_vendor', $wherecond);
             return view('vendor',$data);
@@ -562,8 +563,95 @@ public function menu()
 		$model->get_city_name_location($state_id);
 	}
 
+public function item()
+{
+    $model = new Admin_Model();
+    $uri = service('uri');
 
+    // Get the second segment of the URI
+    $segment = $uri->getSegment(2);
 
+    if (session()->has('user_id')) { 
 
+        $wherecond = array('is_deleted ' => '0');
+        $data['vendor_type'] =  $model->getalldata('tbl_vendor_type', $wherecond);
 
+        // Fetch data from the database
+        $select = 'tbl_item.*, tbl_vendor_type.vendor_type_name';
+        $table1 = 'tbl_item';
+        $table2 = 'tbl_vendor_type';
+        $joinCond = 'tbl_vendor_type.id = tbl_item.vendor_type_id';
+        $wherecond = array('tbl_item.is_deleted' => '0');
+        $type = 'left';
+        $data['iteam'] = $model->jointwotables($select, $table1, $table2, $joinCond, $wherecond, $type);
+
+        if($segment != ''){
+            $wherecond = array('id' => $segment);
+            $data['single'] =  $model->getsinglerow('tbl_item', $wherecond);
+        }
+
+        if($this->request->getVar('submit') == 'submit'){
+            // Get the input values
+            $vendor_type_id = $this->request->getVar('vendor_type_id');
+            $Item_name = $this->request->getVar('Item_name');
+            
+            // Check if the same value exists in the database
+            $existingItem = $model->getSingleData('tbl_item', array('vendor_type_id' => $vendor_type_id, 'Item_name' => $Item_name));
+            
+            if (!empty($existingItem)) {
+                // If the same value exists, show error message
+                session()->setFlashdata('error', 'The item with the same vendor type and name already exists.');
+            } else {
+                // If the same value doesn't exist, proceed to save the data
+                $data = [
+                    'vendor_type_id' => $vendor_type_id, 
+                    'Item_name' => $Item_name, 
+                ];
+                $db = \Config\Database::Connect();
+        
+                if ($this->request->getVar('id') == "") {
+                    $add_data = $db->table('tbl_item'); // Set the table to be used with the query
+                    $add_data->insert($data);
+                    session()->setFlashdata('success', 'Data added successfully.');
+                } else {
+                    $update_data = $db->table('tbl_item')->where('id', $this->request->getVar('id'));
+                    $update_data->update($data);
+                    
+                    session()->setFlashdata('success', 'Data updated successfully.');
+                }
+                return redirect()->to('add-item');
+            }
+        }
+    
+        return view('Item', $data);
+    } else {
+        return redirect()->to(base_url());
+    }
+}
+public function create_po()
+{
+    $model = new Admin_Model();
+    $wherecond = array('is_deleted ' => '0');
+    $data['vendor'] =  $model->getalldata('tbl_vendor', $wherecond);
+    $data['country'] = $model->get_country_name();
+    $data['states'] = $model->get_states_name();
+    $data['citys'] = $model->get_citys_name();
+//    echo '<pre>' ;print_r($data);die;
+    echo view('create_po',$data);
+}
+
+public function fetchVendorDetails()
+{
+   
+    $vendorId = $this->request->getPost('vendor_id');
+   // print_r($vendorId);die;
+    $model = new Admin_Model();
+    $existingItem = $model->getSingleData('tbl_vendor', array('id' => $vendorId, 'is_deleted' => '0'));
+    $vendorData = $existingItem;
+    if ($vendorData) {
+        return $this->response->setJSON($vendorData);
+    } else {
+        return $this->response->setJSON(['error' => 'Vendor details not found']);
+    }
+}
 }

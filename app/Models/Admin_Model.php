@@ -74,7 +74,10 @@ class Admin_Model extends Model
         //    echo $this->db->getLastQuery();die;
         return $result;
     }
-
+ public function getSingleData($table, $where)
+    {
+        return $this->db->table($table)->where($where)->get()->getRow();
+    }
 
 
 }

@@ -94,49 +94,15 @@
 
                             <div class="form-group col-3">
                               <label for="vendor_type">Vendor Type</label>
-                              <select name="vendor_type" id="vendor_type" class="form-control valid" aria-invalid="false">
-                                  <option value="">Please Select Vendor Type</option>                        
-                                  <option value="Transportation" <?php if(!empty($single) && $single->vendor_type == 'Transportation'){?>selected="selected"
-                                      <?php }?>>Transportation </option>
-                                  <option value="Software" <?php if(!empty($single) && $single->vendor_type == 'Software'){?>selected="selected"
-                                      <?php }?>>Software</option>
-                                  <option value="Shipping" <?php if(!empty($single) && $single->vendor_type == 'Shipping'){?>selected="selected"
-                                      <?php }?>>Shipping</option>
-                                  <option value="Marketing"<?php if(!empty($single) && $single->vendor_type == 'Marketing'){?>selected="selected"
-                                      <?php }?>>Marketing</option>
-                                  <option value="Catering"<?php if(!empty($single) && $single->vendor_type == 'Catering'){?>selected="selected"
-                                      <?php }?>>Catering</option>
-                                  <option value="Security"<?php if(!empty($single) && $single->vendor_type == 'Security'){?>selected="selected"
-                                      <?php }?>>Security</option>
-                                  <option value="Finance"<?php if(!empty($single) && $single->vendor_type == 'Finance'){?>selected="selected"
-                                      <?php }?>>Finance</option>
-                                  <option value="Human Resource (HR)"<?php if(!empty($single) && $single->vendor_type == 'Human Resource (HR)'){?>selected="selected"
-                                      <?php }?>>Human Resource (HR)</option>
-                                  <option value="Sanitation"<?php if(!empty($single) && $single->vendor_type == 'Sanitation'){?>selected="selected"
-                                      <?php }?>>Sanitation</option>
-                                  <option value="Sanitary"<?php if(!empty($single) && $single->vendor_type == 'Sanitary'){?>selected="selected"
-                                      <?php }?>>Sanitary</option>
-                                  <option value="Water"<?php if(!empty($single) && $single->vendor_type == 'Water'){?>selected="selected"
-                                      <?php }?>>Water</option>
-                                  <option value="Electricity"<?php if(!empty($single) && $single->vendor_type == 'Electricity'){?>selected="selected"
-                                      <?php }?>>Electricity</option>
-                                  <option value="Food"<?php if(!empty($single) && $single->vendor_type == 'Food'){?>selected="selected"
-                                      <?php }?>>Food</option>
-                                  <option value="Cleaning"<?php if(!empty($single) && $single->vendor_type == 'Cleaning'){?>selected="selected"
-                                      <?php }?>>Cleaning</option>
-                                  <option value="Hardware"<?php if(!empty($single) && $single->vendor_type == 'Hardware'){?>selected="selected"
-                                      <?php }?>>Hardware</option>
-                                  <option value="Furniture"<?php if(!empty($single) && $single->vendor_type == 'Furniture'){?>selected="selected"
-                                      <?php }?>>Furniture</option>
-                                  <option value="Plumbing"<?php if(!empty($single) && $single->vendor_type == 'Plumbing'){?>selected="selected"
-                                      <?php }?>>Plumbing</option>
-                                  <option value="Services"<?php if(!empty($single) && $single->vendor_type == 'Services'){?>selected="selected"
-                                      <?php }?>>Services</option>
-                                  <option value="Phone"<?php if(!empty($single) && $single->vendor_type == 'Phone'){?>selected="selected"
-                                      <?php }?>>Phone</option>
-                                  <option value="Other"<?php if(!empty($single) && $single->vendor_type == 'Other'){?>selected="selected"
-                                      <?php }?>>Other</option>
-                                </select>
+                             
+                              <select class="form-control valid" name="vendor_type" id="vendor_type" aria-invalid="false">
+                                        <?php foreach ($vendor_type as $vendor_type_item): ?>
+                                        <option value="<?php echo $vendor_type_item->id; ?>"
+                                            <?php if (!empty($single) && $single->vendor_type_id == $vendor_type_item->id) echo "selected"; ?>>
+                                            <?php echo $vendor_type_item->vendor_type_name; ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
                             </div>
                             <div class="form-group col-3">
                               <label for="gst_no">GST No</label>
