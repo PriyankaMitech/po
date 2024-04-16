@@ -211,6 +211,7 @@
                 <li><a class="nav-link" href="<?=base_url(); ?>tax">Add Tax</a></li>
                 <li><a class="nav-link" href="<?=base_url(); ?>vendor_type">Add Vendor Type</a></li>
                 <li><a class="nav-link" href="<?=base_url(); ?>menu">Add menu</a></li>
+                <li><a class="nav-link" href="<?=base_url(); ?>add-item">Add Item</a></li>
 
                 
 
@@ -239,7 +240,14 @@
                 <li><a class="nav-link" href="<?=base_url(); ?>email-read.html">read</a></li>
               </ul>
             </li>
-            <li class="menu-header">UI Elements</li>
+            <li class="dropdown">
+              <a href="<?=base_url(); ?>#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>PO</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="<?=base_url(); ?>create_po">Request PO</a></li>
+                <li><a class="nav-link" href="<?=base_url(); ?>user-list">User List</a></li>
+              </ul>
+            </li>
+            <!-- <li class="menu-header">UI Elements</li>
             <li class="dropdown">
               <a href="<?=base_url(); ?>#" class="menu-toggle nav-link has-dropdown"><i data-feather="copy"></i><span>Basic
                   Components</span></a>
@@ -407,7 +415,7 @@
                   </ul>
                 </li>
               </ul>
-            </li>
+            </li> -->
           </ul>
         </aside>
       </div>

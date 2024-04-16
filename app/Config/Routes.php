@@ -40,6 +40,8 @@ $routes->post('user','Home::user');
 $routes->get('edit-user/(:any)','Home::user/$1');
 $routes->post('edit-user/(:any)','Home::user/$1');
 $routes->get('user-list','Home::get_user_list');
+// $routes->get('Item','Home::Item');
+// $routes->post('Item','Home::Item_form');
 
 $routes->get('add-vendor','Home::vendor');
 $routes->post('add-vendor','Home::vendor');
@@ -50,7 +52,15 @@ $routes->get('vendor-list','Home::get_vendor_list');
 $routes->post('get_state_name_location','Home::get_state_name_location');
 $routes->post('get_city_name_location','Home::get_city_name_location');
 
+$routes->get('add-item','Home::item');
+$routes->post('add-item','Home::item');
+$routes->get('edit-item/(:any)','Home::item/$1');
+$routes->post('edit-item/(:any)','Home::item/$1');
+$routes->get('item-list','Home::get_item_list');
 
+
+$routes->get('create_po','Home::create_po');
+$routes->post('fetchVendorDetails','Home::fetchVendorDetails');
 
 
 
